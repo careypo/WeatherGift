@@ -1,12 +1,14 @@
 //
 //  AppDelegate.swift
 //  WeatherGift
+// KEY: AIzaSyBlsb2par7QtTnNibaMpqi7FCWoEpZ43_4
 //
 //  Created by Paige Carey on 10/10/18.
 //  Copyright © 2018 Paige Carey. All rights reserved.
 //
 
 import UIKit
+import GooglePlaces
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        GMSPlacesClient.provideAPIKey("AIzaSyBlsb2par7QtTnNibaMpqi7FCWoEpZ43_4")
         return true
     }
 
