@@ -15,6 +15,7 @@
 		E714335E216EE8E000138A4B /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E714335D216EE8E000138A4B /* DetailVC.swift */; };
 		E7143362216EECB000138A4B /* ListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7143361216EECB000138A4B /* ListVC.swift */; };
 		E7143364216EEE2900138A4B /* PageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7143363216EEE2900138A4B /* PageVC.swift */; };
+		E74EDBDF217CFCC4002E2BC3 /* WeatherLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74EDBDE217CFCC4002E2BC3 /* WeatherLocation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		E714335D216EE8E000138A4B /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
 		E7143361216EECB000138A4B /* ListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListVC.swift; sourceTree = "<group>"; };
 		E7143363216EEE2900138A4B /* PageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageVC.swift; sourceTree = "<group>"; };
+		E74EDBDE217CFCC4002E2BC3 /* WeatherLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherLocation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				E714334B216EE88600138A4B /* AppDelegate.swift */,
+				E74EDBDE217CFCC4002E2BC3 /* WeatherLocation.swift */,
 				E7143363216EEE2900138A4B /* PageVC.swift */,
 				E714335D216EE8E000138A4B /* DetailVC.swift */,
 				E7143361216EECB000138A4B /* ListVC.swift */,
@@ -239,6 +242,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E74EDBDF217CFCC4002E2BC3 /* WeatherLocation.swift in Sources */,
 				E7143362216EECB000138A4B /* ListVC.swift in Sources */,
 				E7143364216EEE2900138A4B /* PageVC.swift in Sources */,
 				E714334C216EE88600138A4B /* AppDelegate.swift in Sources */,
