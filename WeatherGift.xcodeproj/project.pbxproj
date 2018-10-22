@@ -16,6 +16,7 @@
 		E7143362216EECB000138A4B /* ListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7143361216EECB000138A4B /* ListVC.swift */; };
 		E7143364216EEE2900138A4B /* PageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7143363216EEE2900138A4B /* PageVC.swift */; };
 		E74EDBDF217CFCC4002E2BC3 /* WeatherLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74EDBDE217CFCC4002E2BC3 /* WeatherLocation.swift */; };
+		E79B859D217E6779006091CC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E79B859C217E6779006091CC /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		E7143361216EECB000138A4B /* ListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListVC.swift; sourceTree = "<group>"; };
 		E7143363216EEE2900138A4B /* PageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageVC.swift; sourceTree = "<group>"; };
 		E74EDBDE217CFCC4002E2BC3 /* WeatherLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherLocation.swift; sourceTree = "<group>"; };
+		E79B859C217E6779006091CC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 				E74EDBDE217CFCC4002E2BC3 /* WeatherLocation.swift */,
 				E7143363216EEE2900138A4B /* PageVC.swift */,
 				E714335D216EE8E000138A4B /* DetailVC.swift */,
+				E79B859C217E6779006091CC /* Constants.swift */,
 				E7143361216EECB000138A4B /* ListVC.swift */,
 				E714334F216EE88600138A4B /* Main.storyboard */,
 				E7143352216EE88800138A4B /* Assets.xcassets */,
@@ -247,6 +250,7 @@
 				E7143364216EEE2900138A4B /* PageVC.swift in Sources */,
 				E714334C216EE88600138A4B /* AppDelegate.swift in Sources */,
 				E714335E216EE8E000138A4B /* DetailVC.swift in Sources */,
+				E79B859D217E6779006091CC /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
