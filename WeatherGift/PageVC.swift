@@ -49,6 +49,7 @@ class PageVC: UIPageViewController {
         pageControl = UIPageControl(frame: CGRect(x: (view.frame.width - pageControlWidght) / 2, y: safeHeight - pageControlHeight, width: pageControlWidght, height: pageControlHeight))
         pageControl.pageIndicatorTintColor = UIColor.lightGray
         pageControl.currentPageIndicatorTintColor = UIColor.black
+        pageControl.backgroundColor = UIColor.white
         pageControl.numberOfPages = locationsArray.count
         pageControl.currentPage = currentPage
         pageControl.addTarget(self, action: #selector(pageControlPressed), for: .touchUpInside)

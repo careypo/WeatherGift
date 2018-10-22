@@ -24,7 +24,11 @@ class DetailVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateUserInterFace()
+        if currentPage != 0 {
+            self.locationsArray[currentPage].getWeather {
+                self.updateUserInterFace()
+            }
+        }
         
     }
 
@@ -38,6 +42,9 @@ class DetailVC: UIViewController {
     func updateUserInterFace() {
         locationLabel.text = locationsArray[currentPage].name
         dateLabel.text = locationsArray[currentPage].coordinates
+        temperatureLabel.text = locationsArray[currentPage].currentTemp
+        summaryLabel.text = locationsArray[currentPage].currentSummary
+
     }
 }
 
@@ -47,8 +54,6 @@ extension DetailVC: CLLocationManagerDelegate {
     func getLocation() {
         locationManager = CLLocationManager()
         locationManager.delegate = self
-        let status = CLLocationManager.authorizationStatus()
-        handleLocationAuthorizationStatus(status: status)
     }
     
     func handleLocationAuthorizationStatus(status: CLAuthorizationStatus) {
@@ -74,7 +79,7 @@ extension DetailVC: CLLocationManagerDelegate {
         currentLocation = locations.last
         let currentLatitude = currentLocation.coordinate.latitude
         let currentLongitude = currentLocation.coordinate.longitude
-        let currentCoordinates = "\(currentLongitude),\(currentLatitude)"
+        let currentCoordinates = "\(currentLatitude),\(currentLongitude)"
         dateLabel.text = currentCoordinates
         geoCoder.reverseGeocodeLocation(currentLocation, completionHandler: {placemarks, error in
             if placemarks != nil {
@@ -86,8 +91,10 @@ extension DetailVC: CLLocationManagerDelegate {
             }
             self.locationsArray[0].name = place
             self.locationsArray[0].coordinates = currentCoordinates
-            self.locationsArray[0].getWeather()
-            self.updateUserInterFace()
+            self.locationsArray[0].getWeather {
+                self.updateUserInterFace()
+            }
+            
         })
     }
     
