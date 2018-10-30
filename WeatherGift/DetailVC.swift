@@ -12,7 +12,6 @@ import CoreLocation
 private let dateFormatter: DateFormatter = {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "EEEE, MMM dd, y"
-    print("%%%% DateFormatter Just Created in DetailVC")
     return dateFormatter
 }()
 
@@ -24,9 +23,11 @@ class DetailVC: UIViewController {
     @IBOutlet weak var summaryLabel: UILabel!
     @IBOutlet weak var currentImage: UIImageView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     var currentPage = 0
     var locationsArray = [WeatherLocation] ()
+    var locationDetail: WeatherDetail!
     var locationManager: CLLocationManager!
     var currentLocation: CLLocation!
     
@@ -34,8 +35,13 @@ class DetailVC: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+        locationDetail = WeatherDetail(name: locationsArray[currentPage].name, coordinates: locationsArray[currentPage].coordinates)
+        
         if currentPage != 0 {
-            self.locationsArray[currentPage].getWeather {
+            self.locationDetail.getWeather {
                 self.updateUserInterFace()
             }
         }
@@ -50,14 +56,14 @@ class DetailVC: UIViewController {
     }
     
     func updateUserInterFace() {
-        let location = locationsArray[currentPage]
-        locationLabel.text = location.name
-        let dateString = location.currentTime.format(timeZone: location.timeZone, dateFormatter: dateFormatter)
+        locationLabel.text = locationDetail.name
+        let dateString = locationDetail.currentTime.format(timeZone: locationDetail.timeZone, dateFormatter: dateFormatter)
         dateLabel.text = dateString
-        temperatureLabel.text = location.currentTemp
-        summaryLabel.text = location.currentSummary
-        currentImage.image = UIImage(named: location.currentIcon)
+        temperatureLabel.text = locationDetail.currentTemp
+        summaryLabel.text = locationDetail.currentSummary
+        currentImage.image = UIImage(named: locationDetail.currentIcon)
         tableView.reloadData()
+        collectionView.reloadData()
 
     }
 }
@@ -104,7 +110,8 @@ extension DetailVC: CLLocationManagerDelegate {
             }
             self.locationsArray[0].name = place
             self.locationsArray[0].coordinates = currentCoordinates
-            self.locationsArray[0].getWeather {
+            self.locationDetail = WeatherDetail(name: place, coordinates: currentCoordinates)
+            self.locationDetail.getWeather {
                 self.updateUserInterFace()
             }
             
@@ -119,18 +126,33 @@ extension DetailVC: CLLocationManagerDelegate {
 
 extension DetailVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return locationsArray[currentPage].dailyForecastArray.count
+        return locationDetail.dailyForecastArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DayWeatherCell", for: indexPath) as! DayWeatherCell
-        let dailyForecast = locationsArray[currentPage].dailyForecastArray[indexPath.row]
-        let timeZone = locationsArray[currentPage].timeZone
+        let dailyForecast = locationDetail.dailyForecastArray[indexPath.row]
+        let timeZone = locationDetail.timeZone
         cell.update(with: dailyForecast, timeZone: timeZone)
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
+    }
+}
+
+extension DetailVC: UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return locationDetail.hourlyForecastArray.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let hourlyCell = collectionView.dequeueReusableCell(withReuseIdentifier: "HourlyCell", for: indexPath) as! HourlyWeatherCell
+        let hourlyForecast = locationDetail.hourlyForecastArray[indexPath.row]
+        let timeZone = locationDetail.timeZone
+        hourlyCell.update(with: hourlyForecast, timeZone: timeZone)
+        return hourlyCell
     }
 }

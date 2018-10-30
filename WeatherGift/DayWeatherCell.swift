@@ -11,7 +11,6 @@ import UIKit
 private let dateFormatter: DateFormatter = {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "EEEE"
-    print("**** DateFormatter Just Created in DayWeatherCell")
     return dateFormatter
 }()
 
@@ -27,7 +26,7 @@ class DayWeatherCell: UITableViewCell {
 
     }
     
-    func update(with dailyForecast: WeatherLocation.DailyForecast, timeZone: String) {
+    func update(with dailyForecast: WeatherDetail.DailyForecast, timeZone: String) {
         dayCellIcon.image = UIImage(named: dailyForecast.dailyIcon)
         dayCellSummary.text = dailyForecast.dailySummary
         dayCellMaxTemp.text = String(format: "%2.f", dailyForecast.dailyMaxTemp) + "°"
